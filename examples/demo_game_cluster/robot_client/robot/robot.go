@@ -1,7 +1,10 @@
-package main
+package robot
 
 import (
 	"fmt"
+	"math/rand"
+	"time"
+
 	cherryError "github.com/cherry-game/cherry/error"
 	"github.com/cherry-game/cherry/examples/demo_game_cluster/internal/code"
 	"github.com/cherry-game/cherry/examples/demo_game_cluster/internal/pb"
@@ -10,8 +13,6 @@ import (
 	cherryLogger "github.com/cherry-game/cherry/logger"
 	cherryClient "github.com/cherry-game/cherry/net/parser/pomelo/client"
 	jsoniter "github.com/json-iterator/go"
-	"math/rand"
-	"time"
 )
 
 type (

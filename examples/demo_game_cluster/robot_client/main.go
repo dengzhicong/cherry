@@ -2,15 +2,17 @@ package main
 
 import (
 	"fmt"
-	"github.com/cherry-game/cherry/examples/demo_game_cluster/internal/code"
-	cherryHttp "github.com/cherry-game/cherry/extend/http"
-	cherryTime "github.com/cherry-game/cherry/extend/time"
-	cherryLogger "github.com/cherry-game/cherry/logger"
-	"github.com/cherry-game/cherry/net/parser/pomelo/client"
-	jsoniter "github.com/json-iterator/go"
 	"math/rand"
 	"sync"
 	"time"
+
+	"github.com/cherry-game/cherry/examples/demo_game_cluster/internal/code"
+	"github.com/cherry-game/cherry/examples/demo_game_cluster/robot_client/robot"
+	cherryHttp "github.com/cherry-game/cherry/extend/http"
+	cherryTime "github.com/cherry-game/cherry/extend/time"
+	cherryLogger "github.com/cherry-game/cherry/logger"
+	pomeloClient "github.com/cherry-game/cherry/net/parser/pomelo/client"
+	jsoniter "github.com/json-iterator/go"
 )
 
 var (
@@ -68,10 +70,10 @@ func RegisterDevAccount(url string, accounts map[string]string) {
 	}
 }
 
-func RunRobot(url, pid, userName, password, addr string, serverId int32, printLog bool) *Robot {
+func RunRobot(url, pid, userName, password, addr string, serverId int32, printLog bool) *robot.Robot {
 
 	// 创建客户端
-	cli := New(
+	cli := robot.New(
 		pomeloClient.New(
 			pomeloClient.WithRequestTimeout(10*time.Second),
 			pomeloClient.WithErrorBreak(true),
